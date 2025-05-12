@@ -7,6 +7,14 @@ same([1,2,3] [4,1,9]);  //true;
 same([1,2,3],[1,9]) // false
 same([1,2,1],[4,4,1]) // false  
 
+
+[1,2,2,4]
+[1,4,8,16]
+
+[1,2,3,4]
+[1,4,9]
+
+
  */
 
 /**
@@ -61,44 +69,61 @@ obj2 = { 4: 2, 1: 1, 9: 1 };
 // if key**2 === obj2[key]
 
 function optimizedSame(arr1, arr2) {
+  // If the arrays are not of equal length, they can't be "same" in the required sense
   if (arr1.length !== arr2.length) {
     return false;
   }
 
+  // Create frequency counters for both arrays
   let obj1 = {};
   let obj2 = {};
 
+  // Populate frequency counter for the first array
   for (let i = 0; i < arr1.length; i++) {
     let elem1 = arr1[i];
 
-    if (obj1[elem1[i]] > 0) {
-      obj1[elem1[i]]++;
+    // Increment the count if the element already exists, else initialize it
+    if (obj1[elem1] > 0) {
+      obj1[elem1]++;
     } else {
       obj1[elem1] = 1;
     }
   }
 
+  // Populate frequency counter for the second array
   for (let i = 0; i < arr2.length; i++) {
-    let elem = arr2[i];
+    let elem2 = arr2[i];
 
-    if (obj2[elem[i]] > 0) {
-      obj2[elem[i]]++;
+    // Increment the count if the element already exists, else initialize it
+    if (obj2[elem2] > 0) {
+      obj2[elem2]++;
     } else {
-      obj2[elem] = 1;
+      obj2[elem2] = 1;
     }
   }
 
-  // obj1 = { 1: 1, 2: 2, 3: 1 };
-  // obj2 = { 4: 2, 1: 1, 9: 1 };
+  // Example:
+  // If arr1 = [1, 2, 2, 3] and arr2 = [4, 1, 4, 9]
+  // Then obj1 = { 1: 1, 2: 2, 3: 1 };
+  //      obj2 = { 4: 2, 1: 1, 9: 1 };
 
+  // Compare frequency counters:
+  // For each key in obj1, check if its square exists in obj2 with the same frequency
   for (let key in obj1) {
-    if (!(key ** 2 in obj2)) {
+    let squaredKey = key ** 2;
+
+    // If squared key does not exist in obj2, return false
+    if (!(squaredKey in obj2)) {
       return false;
     }
-    if (obj1[key ** 2] !== obj2[key]) {
+
+    // If the frequency of the squared key in obj2 doesn't match, return false
+    if (obj2[squaredKey] !== obj1[key]) {
       return false;
     }
   }
+
+  // If all checks pass, return true
   return true;
 }
 

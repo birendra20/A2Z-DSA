@@ -139,7 +139,7 @@ class SinglyLinkedList {
 
     // If the node is found, update its value
     if (foundNode) {
-      foundNode.value = value; // Note: should be 'val' if you're following the constructor property
+      foundNode.val = value; // Note: should be 'val' if you're following the constructor property
       return true; // Indicate that the update was successful
     }
 
@@ -219,4 +219,5 @@ list.push(4);
 list.push(5);
 list.push(6);
 
-console.log("list-4", list.get(4));
+list.set(5, "six")
+console.log("list-4", list);

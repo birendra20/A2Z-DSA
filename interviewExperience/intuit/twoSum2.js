@@ -49,7 +49,6 @@ function twoSumII(nums, target) {
 
   while (leftP < rightP) {
     let sum = nums[leftP] + nums[rightP]; // Calculate the sum of elements at leftP and rightP
-    console.log("sum", sum);
 
     if (sum === target) {
       // ✅ If the sum matches the target, return the indices (1-based index)

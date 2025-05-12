@@ -20,27 +20,33 @@ validAnagram('texttwisttime', 'timetwisttext') // true
 // obj1 = {a:2,z:1} , obj2 = {z:2 ,a:1}
 
 function validAnagram(str1, str2) {
+  // If the lengths of the strings are not equal, they cannot be anagrams
   if (str1.length !== str2.length) return false;
 
+  // Create frequency counter objects for both strings
   let freqCounter1 = {};
   let freqCounter2 = {};
 
+  // Count the frequency of each character in the first string
   for (elem of str1) {
     freqCounter1[elem] = (freqCounter1[elem] || 0) + 1;
   }
 
+  // Count the frequency of each character in the second string
   for (elem of str2) {
     freqCounter2[elem] = (freqCounter2[elem] || 0) + 1;
   }
 
-  //   console.log(freqCounter1, freqCounter2);
-
+  // Compare the frequency of each character in the first string
+  // with the corresponding frequency in the second string
   for (key in freqCounter1) {
+    // If the frequency of any character doesn't match, return false
     if (freqCounter1[key] !== freqCounter2[key]) {
       return false;
     }
   }
 
+  // If all frequencies match, the strings are anagrams
   return true;
 }
 
@@ -63,6 +69,7 @@ function validAnagramByColt(str1, str2) {
     lookupObj[elem] = lookupObj[elem] ? lookupObj[elem] + 1 : 1;
   }
 
+  console.log("lookupObj", lookupObj); //{ a: 3, n: 1, g: 1, r: 1, m: 1 }
   for (let elem of str2) {
     // can't find letter or letter is zero than it's not an anagram
     if (!lookupObj[elem]) {
@@ -77,11 +84,11 @@ function validAnagramByColt(str1, str2) {
   return true;
 }
 
-console.log(validAnagramByColt("", "")); // true
-console.log(validAnagramByColt("aaz", "zza")); // false
+// console.log(validAnagramByColt("", "")); // true
+// console.log(validAnagramByColt("aaz", "zza")); // false
 console.log(validAnagramByColt("anagram", "nagaram")); // true
-console.log(validAnagramByColt("rat", "car")); // false) // false
-console.log(validAnagramByColt("awesome", "awesom")); // false
-console.log(validAnagramByColt("amanaplanacanalpanama", "acanalmanplanpamana")); // false
-console.log(validAnagramByColt("qwerty", "qeywrt")); // true
-console.log(validAnagramByColt("texttwisttime", "timetwisttext")); // true
+// console.log(validAnagramByColt("rat", "car")); // false) // false
+// console.log(validAnagramByColt("awesome", "awesom")); // false
+// console.log(validAnagramByColt("amanaplanacanalpanama", "acanalmanplanpamana")); // false
+// console.log(validAnagramByColt("qwerty", "qeywrt")); // true
+// console.log(validAnagramByColt("texttwisttime", "timetwisttext")); // true
