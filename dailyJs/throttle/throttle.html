@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Basic Throttle Example</title>
+</head>
+<body>
+
+  <button id="throttleBtn">Click me rapidly!</button>
+
+  <script>
+    // Throttle function: ensures func runs at most once every delay ms
+    function throttle(func, delay) {
+      let lastCall = 0;
+      return function(...args) {
+        const now = Date.now();
+        if (now - lastCall >= delay) {
+          lastCall = now;
+          func.apply(this, args);
+        }
+      };
+    }
+
+    function onClick() {
+      console.log('Button clicked at', new Date().toLocaleTimeString());
+    }
+
+    const btn = document.getElementById('throttleBtn');
+    // Attach throttled click handler with 2 second delay
+    btn.addEventListener('click', throttle(onClick, 2000));
+  </script>
+
+</body>
+</html>

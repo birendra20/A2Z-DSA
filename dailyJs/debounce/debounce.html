@@ -1,0 +1,43 @@
+<input type="text" id="search-input">
+<script>
+    console.log("test")
+
+    const searchInput = document.getElementById("search-input");
+    const debouncedSearch = debounce(handleSearch)
+    searchInput.addEventListener("input",debouncedSearch)
+
+/**
+ * Debounce function to limit the rate at which a function is executed.
+ * It delays the execution of the passed function until after a specified
+ * delay has elapsed since the last time it was invoked.
+ *
+ * @param {Function} func - The function to debounce.
+ * @param {number} delay - The delay in milliseconds (default is 500ms).
+ * @returns {Function} - A debounced version of the original function.
+ */
+ function debounce(func, delay = 500) {
+    // Timer to keep track of the setTimeout
+    let timer;
+
+    // Return a new function that will be used in place of the original function
+    return function (...args) {
+        // If there's an active timer, clear it to reset the delay
+        if (timer) {
+            clearTimeout(timer);
+        }
+
+        // Start a new timer to call the function after the delay
+        timer = setTimeout(() => {
+            // Call the original function with the correct `this` context and arguments
+            console.log("this",this)
+            func.apply(this, args);
+        }, delay);
+    };
+}
+
+    function handleSearch(e) {
+        console.log("value",e.target.value)
+    }
+
+   
+</script>

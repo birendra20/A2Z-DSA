@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>React CDN Debounce Console Log</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    function debounce(func, delay) {
+      let timerId;
+      return function(...args) {
+        if (timerId) clearTimeout(timerId);
+        timerId = setTimeout(() => {
+          func.apply(this, args);
+        }, delay);
+      };
+    }
+
+    function App() {
+      const [inputValue, setInputValue] = React.useState("");
+
+      const debouncedFn = debounce(handleChange)
+      
+
+      function handleChange(e) {
+console.log("search value",e.target.value);
+
+setInputValue(e.target.value)
+
+
+      }
+
+
+      return (
+        <div style={{ maxWidth: 400, margin: "2rem auto", fontFamily: "Arial" }}>
+          <h2>Debounced Input Console Log</h2>
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder="Type something..."
+            style={{ width: "100%", padding: 8, fontSize: 16 }}
+          />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+
+  </script>
+
+</body>
+</html>
