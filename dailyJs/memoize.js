@@ -3,6 +3,7 @@ function memoize(fn) {
 
   return function (...args) {
     const key = JSON.stringify(args); // Convert arguments into a unique key
+    console.log("key is", key);
 
     if (cache[key]) {
       console.log("Returning from cache");
