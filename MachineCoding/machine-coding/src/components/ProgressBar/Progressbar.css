@@ -1,0 +1,21 @@
+.outer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.inner {
+    background-color: green;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+}
+
+.percentageText {
+    z-index: 2;
+}
