@@ -1,0 +1,91 @@
+Here is a **Logic-Only Practice Questions List** for Machine Coding rounds.
+No solutions, only questions – exactly what you asked.
+
+You can paste this directly into Notion.
+
+---
+
+## ✅ Array & Object Logic Questions
+
+1. Write logic to filter objects based on a boolean value.
+2. Write logic to search objects by partial string match.
+3. Sort an array of objects by:
+
+   * single field
+   * multiple fields
+4. Find the maximum and minimum values in an array.
+5. Remove duplicate values from an array.
+6. Count frequency of each item in an array.
+7. Group an array of objects by a specific key.
+8. Convert an array of objects into a map/dictionary structure.
+9. Flatten a nested array of any depth.
+10. Chunk an array into smaller arrays of size `n`.
+
+---
+
+## ✅ CRUD Logic Questions
+
+11. Implement logic to add an element to an array immutably.
+12. Implement update logic for an object inside an array using `id`.
+13. Implement delete logic for an item using `id`.
+14. Toggle a boolean flag in an object inside an array.
+15. Implement bulk delete based on multiple ids.
+
+---
+
+## ✅ Pagination & Data Handling
+
+16. Write logic for client-side pagination.
+17. Write logic to calculate total pages.
+18. Return data for a specific page.
+19. Implement infinite scroll data logic.
+20. Implement “load more” incremental data logic.
+
+---
+
+## ✅ Search, Filter & Sort (Advanced)
+
+21. Implement combined search + filter + sort logic.
+22. Perform case-insensitive search.
+23. Filter data by multiple conditions.
+24. Dynamic sorting based on user-selected keys.
+25. Multi-level grouping (group by role → then status).
+
+---
+
+## ✅ Debounce & Throttle (Logic Only)
+
+26. Write a debounce function.
+27. Write a throttle function.
+28. Cancel a debounce function before execution.
+29. Implement debounce with immediate execution option.
+
+---
+
+## ✅ Date & Time Based Logic
+
+30. Sort objects by date.
+31. Filter records between two dates.
+32. Calculate the difference between two timestamps.
+
+---
+
+## ✅ Real-World Data Scenarios
+
+33. Group transactions by month.
+34. Calculate total sales per category.
+35. Find top 3 highest values in a dataset.
+36. Return recently added items (last N elements).
+37. Merge two arrays of objects based on `id`.
+
+---
+
+## ✅ Bonus Logic Problems
+
+38. Implement memoization logic.
+39. Convert flat array to nested tree structure.
+40. Convert nested tree back to flat array.
+
+---
+
+If you want, I can also create a **hard-mode logic questions list** after you finish these.

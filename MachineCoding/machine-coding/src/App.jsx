@@ -1,6 +1,7 @@
 import './App.css'
 import AutoCompleteSearchBar from './components/AutoCompleteSearchBar/AutoCompleteSearchBar'
 import ProgressBar from './components/ProgressBar/ProgressBar'
+import StopWatch from './components/StopWatch/StopWatch'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
    <ProgressBar progress={10}/>
    <ProgressBar progress={20}/>
    <ProgressBar progress={30}/>
+   <StopWatch/>
     </>
   )
 }

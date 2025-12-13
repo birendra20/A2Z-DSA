@@ -32,7 +32,16 @@ const ProgressBar = ({ progress = 0}) => {
         tabIndex={0}
       >
         <span className="percentageText">{progressValue} %</span>
-        <div className='inner' style={{ width: `${progressValue}%` }}></div>
+        <div 
+        
+        className='inner'
+          style={{
+          transform: `scaleX(${progressValue / 100})`,
+          transformOrigin: "left"
+        }}
+        // style={{ width: `${progressValue}%` }}
+        
+        ></div>
       </div>
     </>
   );
