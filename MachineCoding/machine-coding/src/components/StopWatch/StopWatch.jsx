@@ -69,6 +69,7 @@ const StopWatch = () => {
     const seconds = totalSeconds % 60;
     
     // Step 5: Get centiseconds (milliseconds / 10)
+    
     const ms = Math.floor((milliseconds % 1000) / 10);
 
     // return `${hours}:${minutes}:${seconds}:${ms}`
@@ -133,3 +134,15 @@ const StopWatch = () => {
 };
 
 export default StopWatch;
+
+
+/*
+Interview-friendly explanation
+
+
+why const ms = Math.floor((milliseconds % 1000) / 10);??
+Even though we receive time in milliseconds, it represents total elapsed time.
+To display it like a stopwatch, we extract the millisecond portion of the current second using modulo 1000 and then scale it down to two digits for better readability.
+
+
+*/

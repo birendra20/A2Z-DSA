@@ -1,0 +1,18 @@
+TTFB stands for Time to First Byte. 
+It's a web performance metric that measures the time between when a browser makes an HTTP request and when it receives the first byte of data back from the server.
+
+TTFB includes three main components:
+
+1. Redirect time - Any redirects that need to happen
+2. Server processing time - How long the server takes to process the request and generate a response
+3. Network latency - The time it takes for the request to travel to the server and for the first byte to travel back
+
+TTFB is important because it indicates how responsive your server is. A high TTFB can mean:
+- Slow server processing
+- Network issues
+- Database queries taking too long
+- Poorly optimized backend code
+
+Generally, a good TTFB is under 200ms, though what's acceptable varies depending on your application. For example, dynamic pages typically have higher TTFB than static content served from a CDN.
+
+You can measure TTFB using browser developer tools (Network tab), tools like WebPageTest, or through monitoring services. It's one of several metrics used to assess overall page load performance alongside metrics like First Contentful Paint (FCP) and Largest Contentful Paint (LCP).

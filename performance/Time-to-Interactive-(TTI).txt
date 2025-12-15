@@ -1,0 +1,36 @@
+Time to Interactive (TTI) is a web performance metric that measures how long it takes for a page to become fully interactive
+ - meaning users can reliably interact with it without experiencing lag or delays.
+
+A page is considered interactive when:
+
+1. The page has displayed useful content (First Contentful Paint has occurred)
+2. Event handlers are registered for most visible page elements
+3. The page responds to user interactions within 50ms** - meaning the main thread isn't blocked by long-running JavaScript tasks
+
+## Why TTI matters
+
+TTI is crucial because a page might *look* loaded but still be unresponsive. For example, you might see buttons and forms, but clicking them does nothing because JavaScript is still executing in the background. This creates a frustrating user experience.
+
+## What affects TTI
+
+Common culprits for poor TTI include:
+- Large JavaScript bundles that take time to parse and execute
+- Long-running JavaScript tasks blocking the main thread
+- Third-party scripts (ads, analytics, chat widgets)
+- Unoptimized code or inefficient frameworks
+
+## Good TTI benchmarks
+
+- Good: Under 3.8 seconds
+- Needs improvement: 3.8-7.3 seconds  
+- Poor: Over 7.3 seconds
+
+## How to improve TTI
+
+- Code splitting to reduce initial JavaScript payload
+- Deferring non-critical JavaScript
+- Removing unused code
+- Using web workers for heavy computations
+- Optimizing third-party scripts
+
+You can measure TTI using tools like Lighthouse (in Chrome DevTools), WebPageTest, or PageSpeed Insights. Note that TTI has been somewhat superseded by newer metrics like **Total Blocking Time (TBT)** and **Interaction to Next Paint (INP)** in modern performance monitoring.
