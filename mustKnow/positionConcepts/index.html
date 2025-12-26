@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CSS Position Concepts — Learning Project</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>CSS Position Concepts — Learning Project</h1>
+    <p class="lead">Practical, interview-focused examples for <code>position</code> and related concepts.</p>
+  </header>
+
+  <main>
+    <!-- STATIC: default flow -->
+    <section id="static" class="card">
+      <h2>position: static (default)</h2>
+      <!-- Explain: static elements follow normal document flow and ignore top/right/bottom/left offsets. -->
+      <p class="explain">Static is the default. Elements participate in normal flow. Use when you don't need special positioning.</p>
+      <div class="static-demo">
+        <p>Block A (static)</p>
+        <p>Block B (static)</p>
+      </div>
+    </section>
+
+    <!-- RELATIVE: offset from its normal position, often used as positioning context -->
+    <section id="relative" class="card">
+      <h2>position: relative</h2>
+      <!-- Explain: relative doesn't remove an element from flow; offsets shift it visually but its original space remains. -->
+      <p class="explain">Use <code>relative</code> to nudge elements or create a positioning context for absolutely positioned descendants.</p>
+
+      <div class="rel-demo">
+        <div class="box base">Base box (in flow)</div>
+        <div class="box shifted">Shifted with <code>relative; top:-10px; left:10px</code></div>
+      </div>
+
+      <p class="explain small">Common interview trap: using relative with offsets still preserves the element's original space (it doesn't collapse).</p>
+    </section>
+
+    <!-- ABSOLUTE: removed from flow, positioned relative to nearest positioned ancestor -->
+    <section id="absolute" class="card">
+      <h2>position: absolute</h2>
+      <!-- Explain: absolute removes the element from normal flow and positions it relative to the nearest ancestor that is not static (positioned). -->
+      <p class="explain">Absolute is ideal for tooltips, dropdowns, or badges that should be positioned over other content.</p>
+
+      <!-- Positioned parent (relative) is required for expected behavior -->
+      <div class="abs-container">
+        <div class="content">Parent (position: relative)</div>
+        <div class="tooltip">Tooltip (position:absolute; top:8px; right:8px)</div>
+      </div>
+
+      <p class="explain small">If no positioned ancestor exists, absolute positions relative to the initial containing block (usually the viewport).</p>
+    </section>
+
+    <!-- FIXED: positioned relative to viewport -->
+    <section id="fixed" class="card">
+      <h2>position: fixed</h2>
+      <!-- Explain: fixed elements are removed from flow and positioned relative to the viewport. They do not move with scrolling. -->
+      <p class="explain">Fixed is used for persistent UI like sticky navbars, back-to-top buttons, or modals that remain in view regardless of scroll.</p>
+
+      <div class="fixed-demo">
+        <p>Scroll the page to see the fixed footer remain pinned to the viewport.</p>
+      </div>
+    </section>
+
+    <!-- STICKY: hybrid behavior; acts like relative until threshold then becomes fixed relative to its container -->
+    <section id="sticky" class="card">
+      <h2>position: sticky</h2>
+      <!-- Explain: sticky toggles between relative and fixed depending on scroll position within its scroll container. -->
+      <p class="explain">Sticky is great for table headers or sidebars that should remain visible while scrolling within a container. It only works when the ancestor's overflow allows scrolling.</p>
+
+      <div class="sticky-wrapper">
+        <div class="sticky-header">I am sticky (top:0)</div>
+        <div class="long-content">
+          <!-- filler paragraphs to allow scrolling inside container -->
+          <p>Line 1</p>
+          <p>Line 2</p>
+          <p>Line 3</p>
+          <p>Line 4</p>
+          <p>Line 5</p>
+          <p>Line 6</p>
+          <p>Line 7</p>
+          <p>Line 8</p>
+          <p>Line 9</p>
+          <p>Line 10</p>
+        </div>
+      </div>
+
+      <p class="explain small">Common sticky pitfalls: missing <code>top</code> (or left/right), parent with overflow:hidden, or using it in an ancestor that doesn't create a scroll container.</p>
+    </section>
+
+    <!-- Related concepts: offsets, positioning context, stacking and z-index -->
+    <section id="related" class="card">
+      <h2>Related Concepts: offsets, containing block, z-index</h2>
+      <p class="explain">Offsets (top/right/bottom/left) move positioned elements. The reference for offsets is the nearest positioned ancestor for absolute/fixed/sticky. z-index controls stacking order and creates stacking contexts in certain conditions.</p>
+
+      <div class="stack-demo">
+        <div class="layer base">Base</div>
+        <div class="layer middle">Middle (z-index:5)</div>
+        <div class="layer top">Top (z-index:10)</div>
+      </div>
+
+      <p class="explain small">Interview tip: Explain when a new stacking context is created (positioned elements with z-index, opacity less than 1, transform, filter, etc.).</p>
+    </section>
+
+    <!-- Summary -->
+    <section id="summary" class="card">
+      <h2>Summary &amp; Interview Tips</h2>
+      <ul>
+        <li><strong>static</strong>: default; normal flow.</li>
+        <li><strong>relative</strong>: stays in flow; offsets move visually; useful as positioned ancestor.</li>
+        <li><strong>absolute</strong>: removed from flow; positioned relative to nearest positioned ancestor.</li>
+        <li><strong>fixed</strong>: removed from flow; positioned relative to viewport.</li>
+        <li><strong>sticky</strong>: hybrid; becomes fixed within scroll container after threshold.</li>
+      </ul>
+
+      <h3>Common Interview Mistakes</h3>
+      <ul>
+        <li>Expecting <code>absolute</code> to be positioned relative to a non-positioned parent (need <code>position:relative</code>).</li>
+        <li>Forgetting that <code>relative</code> keeps original space in flow.</li>
+        <li>Sticky fails when parent overflow is hidden or when no offset specified.</li>
+        <li>Not understanding stacking contexts and z-index behavior.</li>
+      </ul>
+
+      <p class="footer-note">Open this file in a browser and interact by scrolling to see sticky/fixed behavior and by resizing to observe layout changes.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Created for learning — accessible, interview-ready explanations.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,288 @@
+/* styles.css
+   Learning project demonstrating pseudo-classes and pseudo-elements.
+   Organized by section. Read comments above rules for explanations.
+*/
+
+:root {
+    --bg: #f6f8fa;
+    --card: #ffffff;
+    --accent: #0366d6;
+    --muted: #6a737d;
+    --success: #2ea44f;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: var(--bg);
+    color: #111;
+    margin: 0;
+    padding: 2rem
+}
+
+header h1 {
+    margin: 0 0 .25rem
+}
+
+.lead {
+    color: var(--muted);
+    margin: 0 0 1rem
+}
+
+main {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))
+}
+
+.card {
+    background: var(--card);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(12, 13, 14, .04)
+}
+
+.btn {
+    background: var(--accent);
+    color: #fff;
+    padding: .5rem .75rem;
+    border-radius: 6px;
+    border: 0;
+    cursor: pointer
+}
+
+.btn.small {
+    padding: .25rem .5rem
+}
+
+.btn:focus {
+    outline: 3px solid #ffd33d;
+    outline-offset: 2px
+}
+
+/* visible keyboard focus */
+
+/* ---------- :hover ---------- */
+/* :hover gives a visual affordance on pointer devices. Avoid relying on it for essential actions. */
+.demo-hover {
+    transition: transform .12s ease, box-shadow .12s ease
+}
+
+.demo-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(3, 102, 214, 0.12)
+}
+
+/* ---------- :active ---------- */
+/* :active shows the pressed state while the control is being activated. It doesn't persist after click. */
+.demo-active:active {
+    transform: scale(.98);
+    box-shadow: none
+}
+
+/* ---------- :focus & :focus-visible ---------- */
+/* Keep focus styles to support keyboard users. Use :focus-visible to show focus only when appropriate. */
+.link-demo {
+    display: inline-block;
+    margin-right: .5rem;
+    color: var(--accent);
+    text-decoration: none
+}
+
+.link-demo:focus {
+    outline: 3px dashed rgba(3, 102, 214, .35);
+    outline-offset: 3px
+}
+
+.input-demo {
+    padding: .5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px
+}
+
+.input-demo:focus-visible {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(3, 102, 214, .08)
+}
+
+/* ---------- Form states: :checked, :disabled, :required, :valid / :invalid ---------- */
+/* Styling form states visually while preserving semantics and keyboard access. */
+.demo-form {
+    display: grid;
+    gap: .6rem
+}
+
+.demo-form input {
+    padding: .45rem;
+    border: 1px solid #d0d7de;
+    border-radius: 6px
+}
+
+/* custom checkbox using :checked */
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: .5rem
+}
+
+.checkbox input {
+    appearance: auto
+}
+
+.custom-check {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    border: 1px solid #bbb;
+    border-radius: 3px
+}
+
+.checkbox input:checked+.custom-check {
+    background: var(--accent);
+    border-color: var(--accent)
+}
+
+/* disabled */
+.switch input:disabled+.switch-track {
+    opacity: .5;
+    color: var(--muted)
+}
+
+/* required / valid / invalid visuals using :required and :invalid */
+input:required {
+    box-shadow: inset 0 0 0 1px rgba(255, 193, 7, .05)
+}
+
+input:invalid {
+    border-color: #d73a49;
+    box-shadow: 0 0 0 3px rgba(215, 58, 73, .06)
+}
+
+input:valid {
+    border-color: var(--success)
+}
+
+/* ---------- Structural pseudo-classes ---------- */
+/* :first-child / :last-child / :nth-child / :not / :empty / :is
+   Use to style lists, tables, repetitive UI. Remember :nth-child counts all children. */
+.demo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    overflow: hidden
+}
+
+.demo-list li {
+    padding: .6rem .75rem;
+    border-bottom: 1px solid #f1f3f5
+}
+
+.demo-list li:first-child {
+    font-weight: 700;
+    background: #f8fafb
+}
+
+.demo-list li:last-child {
+    border-bottom: 0
+}
+
+.demo-list li:nth-child(odd) {
+    background: #fff
+}
+
+.demo-list li:nth-child(even) {
+    background: #fbfdff
+}
+
+.demo-list li:not(.special) {
+    color: #333
+}
+
+.demo-list li.empty-item:empty {
+    height: 24px;
+    background: linear-gradient(90deg, #fff, #f6f8fa);
+    color: transparent
+}
+
+.demo-list li:is(.special) {
+    border-left: 4px solid var(--accent);
+    padding-left: .6rem
+}
+
+/* ---------- :focus-within ---------- */
+/* Use when a container should visually react when any child receives focus (e.g., search forms). */
+.search {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    padding: .5rem;
+    border: 1px solid #e6eef8;
+    border-radius: 8px
+}
+
+.search:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 6px 18px rgba(3, 102, 214, .06)
+}
+
+.search input {
+    flex: 1
+}
+
+/* ---------- Pseudo-elements ---------- */
+/* ::before / ::after used for decoration or injected content. Do not place essential semantic content there. */
+.with-deco::before {
+    content: "🔖 ";
+}
+
+.badge-demo .btn.badge::after {
+    /* add a notification dot using ::after */
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ff6b6b;
+    margin-left: .5rem;
+    vertical-align: middle;
+}
+
+/* ::first-letter and ::first-line for typographic emphasis */
+.card-article p::first-letter {
+    font-size: 1.5rem;
+    font-weight: 700;
+    float: left;
+    padding-right: .25rem
+}
+
+.card-article p::first-line {
+    font-variant: small-caps;
+    color: var(--muted)
+}
+
+/* ::selection to improve highlighted text contrast */
+::selection {
+    background: var(--accent);
+    color: #fff
+}
+
+/* Small utilities */
+.explain {
+    font-size: .95rem;
+    color: var(--muted);
+    margin: .5rem 0
+}
+
+.small {
+    font-size: .85rem
+}
+
+footer {
+    margin-top: 1.25rem;
+    color: var(--muted)
+}

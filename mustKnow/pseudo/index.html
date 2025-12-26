@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CSS Pseudo-Classes & Pseudo-Elements — Learning Project</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>CSS Pseudo-Classes &amp; Pseudo-Elements — Learning Project</h1>
+    <p class="lead">Interactive, accessible, interview-ready examples using plain HTML &amp; CSS.</p>
+  </header>
+
+  <main>
+    <!-- Section: hover -->
+    <section id="hover" class="card">
+      <h2>:hover — Visual affordance on pointer hover</h2>
+      <p class="explain">What: Styles an element when a pointing device is over it. When to use: hover states for buttons, links, menus. Mistake: relying on hover for critical functionality (mobile doesn't have hover).</p>
+      <button class="btn demo-hover">Primary Button</button>
+    </section>
+
+    <!-- Section: active -->
+    <section id="active" class="card">
+      <h2>:active — Pressed state</h2>
+      <p class="explain">What: Applies while the element is being activated (mouse down / key press). When: showing pressed effect. Mistake: expecting :active to persist after click.</p>
+      <button class="btn demo-active">Press Me</button>
+    </section>
+
+    <!-- Section: focus & focus-visible -->
+    <section id="focus" class="card">
+      <h2>:focus &amp; :focus-visible — Keyboard and accessibility focus</h2>
+      <p class="explain">What: :focus applies when element receives focus; :focus-visible is shown only when focus should be visible (usually keyboard). When: keyboard navigation, form controls. Mistake: removing focus styles entirely harms accessibility.</p>
+      <a href="#" class="link-demo">Focusable link</a>
+      <input class="input-demo" placeholder="Tab to focus me" aria-label="Demo input">
+    </section>
+
+    <!-- Section: checked, disabled, required, valid/invalid -->
+    <section id="forms" class="card">
+      <h2>Form States — :checked, :disabled, :required, :valid / :invalid</h2>
+      <p class="explain">What: Used to style form controls based on state. When: form validation, custom controls. Mistake: styling checked state without keeping semantics for screen readers.</p>
+
+      <form class="demo-form" novalidate>
+        <label class="checkbox">
+          <input type="checkbox" name="agree"> Accept terms (uses :checked)
+          <span class="custom-check" aria-hidden="true"></span>
+        </label>
+
+        <label class="switch">
+          <input type="checkbox" disabled>
+          <span class="switch-track">Disabled switch (uses :disabled)</span>
+        </label>
+
+        <label>
+          Email (required &amp; validation):
+          <input type="email" required placeholder="you@example.com">
+        </label>
+
+        <label>
+          Zip (pattern):
+          <input pattern="\d{5}" placeholder="5-digit zip">
+        </label>
+
+        <button class="btn" type="submit">Submit</button>
+      </form>
+    </section>
+
+    <!-- Section: structural pseudo-classes -->
+    <section id="structural" class="card">
+      <h2>Structural Selectors — :first-child, :last-child, :nth-child(), :not(), :empty, :is()</h2>
+      <p class="explain">What: Select elements based on position or relation. When: lists, tables, patterns. Mistake: confusing :nth-child (counts all children) vs :nth-of-type.</p>
+
+      <ul class="demo-list">
+        <li>First item (first-child)</li>
+        <li>Second item</li>
+        <li>Third item</li>
+        <li class="special">Fourth item (nth-child(4))</li>
+        <li>Fifth item</li>
+        <li class="empty-item"></li>
+      </ul>
+
+      <p class="explain small">This list shows styling for <code>:first-child</code>, <code>:last-child</code>, <code>:nth-child(odd)</code>, <code>:not(.special)</code>, <code>:empty</code>, and <code>:is()</code>.</p>
+    </section>
+
+    <!-- Section: focus-within -->
+    <section id="focus-within" class="card">
+      <h2>:focus-within — Container reacts to child focus</h2>
+      <p class="explain">What: Matches an element if any descendant has focus. When: forms, search bars highlighting container. Mistake: expecting purely visual focus without keyboard support.</p>
+      <div class="search">
+        <label for="q">Search</label>
+        <input id="q" placeholder="Type and Tab" aria-label="Search input">
+        <button class="btn small">Go</button>
+      </div>
+    </section>
+
+    <!-- Section: pseudo-elements -->
+    <section id="pseudo-elements" class="card">
+      <h2>Pseudo-Elements — ::before, ::after, ::first-letter, ::first-line, ::selection</h2>
+      <p class="explain">What: Style or inject content for parts of an element. When: decorative content, affordances, typographic effects. Mistake: using pseudo-elements for content that should be semantic DOM content.</p>
+
+      <article class="card-article">
+        <h3 class="with-deco">Article Title</h3>
+        <p class="lead-paragraph">This paragraph demonstrates ::first-letter and ::first-line styling. Select some text to see ::selection styling.</p>
+      </article>
+
+      <div class="badge-demo">
+        <button class="btn badge">Notifications</button>
+      </div>
+
+    </section>
+
+    <!-- Summary -->
+    <section id="summary" class="card">
+      <h2>Summary &amp; Interview Tips</h2>
+      <p>This project demonstrates the practical uses and accessibility best practices for pseudo-classes and pseudo-elements.</p>
+      <h3>Quick Notes</h3>
+      <ul>
+        <li><strong>Pseudo-class</strong>: styles based on state (use <code>:</code>).</li>
+        <li><strong>Pseudo-element</strong>: styles parts or injects content (use <code>::</code>).</li>
+        <li>Prefer CSS for visual states and small content insertion; use JS when behaviour or complex DOM is needed.</li>
+      </ul>
+
+      <p class="footer-note">Open this file in a browser to interact. Keyboard: use Tab to navigate, Space/Enter to toggle checkboxes.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Created for learning — accessible, interview-focused examples.</p>
+  </footer>
+</body>
+</html>

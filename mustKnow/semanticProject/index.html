@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn how to build accessible, SEO-friendly landing pages with semantic HTML5">
+    <title>Semantic Landing Page - Best Practices</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!-- HEADER: Represents the introductory content of the page
+         Why: Contains site-wide branding and navigation
+         Accessibility: Screen readers identify this as the page header
+         SEO: Search engines recognize this as primary page metadata -->
+    <header>
+        <!-- NAV: Represents a section with navigation links
+             Why: Specifically for major navigation blocks (not all links need nav)
+             Accessibility: Screen readers can jump directly to navigation
+             When to use: Primary site navigation, table of contents, breadcrumbs
+             Avoid: Using nav for social media links in footer (just use ul instead) -->
+        <nav aria-label="Main navigation">
+            <div class="logo">
+                <h1>Semantic<span>Site</span></h1>
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN: Represents the dominant content of the page
+         Why: Only ONE per page - marks the primary content
+         Accessibility: Screen readers can skip to main content
+         SEO: Signals the most important content to search engines
+         Never: Don't use multiple main tags or nest main inside article/section -->
+    <main style="border: 3px solid green;">
+        started Main
+        <!-- SECTION: Represents a thematic grouping of content
+             Why: Groups related content with its own heading
+             When to use: When the content has a natural heading/theme
+             vs DIV: Section has semantic meaning, div is just a container
+             Best practice: Each section should have a heading (h2-h6) -->
+        <section id="home" class="hero" style="border: 2px solid black;">
+        started home section
+            <div class="hero-content">
+                <!-- Using div here because it's purely for styling/layout
+                     Explanation: No semantic meaning needed for this container
+                     It's just wrapping content for flexbox/grid alignment -->
+                <h2>Build Better Websites with Semantic HTML</h2>
+                <p>Learn how proper HTML5 semantics improve accessibility, SEO, and maintainability</p>
+                <a href="#features" class="cta-button">Get Started</a>
+            </div>
+            
+            <!-- FIGURE: Represents self-contained content (images, diagrams, code)
+                 Why: Groups media with its caption as a single unit
+                 Accessibility: Screen readers associate caption with image
+                 When to use: Images that need captions, illustrations, code snippets
+                 vs IMG alone: Use figure when the image is referenced in content -->
+            <figure class="hero-image" style="border: 2px solid brown;">
+                started figure
+                <img src="https://via.placeholder.com/600x400/4A90E2/ffffff?text=Semantic+HTML" 
+                     alt="Illustration showing HTML5 semantic elements structure with header, nav, main, and footer">
+                <!-- FIGCAPTION: Provides a caption for its parent figure
+                     Why: Explicitly labels what the figure represents
+                     Accessibility: Read along with the image by screen readers -->
+                <figcaption>Modern semantic HTML5 document structure</figcaption>
+            </figure>
+        </section>
+
+        <!-- SECTION: Features - another thematic group -->
+        <section id="features" class="features"  style="border: 2px solid blue;">
+               started features section
+            <h2>Why Semantic HTML Matters</h2>
+            <p class="section-intro">Using the right HTML element for the job brings multiple benefits</p>
+            
+            <!-- Using div here for layout grid
+                 Explanation: This is a presentational container for CSS Grid
+                 No semantic meaning - just organizing visual layout -->
+            <div class="features-grid">
+                
+                <!-- ARTICLE: Represents independent, self-contained content
+                     Why: Could be distributed/reused independently (blog post, widget, card)
+                     vs SECTION: Article is independently reusable, section is part of a larger whole
+                     When to use: Blog posts, news articles, product cards, comments
+                     Best practice: Should make sense on its own -->
+                <article class="feature-card" style="border:2px solid green">
+                    started article
+                    <h3>Improved Accessibility</h3>
+                    <p>Screen readers understand page structure better, helping users with disabilities navigate efficiently. Semantic tags create landmarks that assistive technology can use.</p>
+                </article>
+
+                <article class="feature-card">
+                    <h3>Better SEO</h3>
+                    <p>Search engines prioritize content in semantic tags like <code>&lt;article&gt;</code> and <code>&lt;main&gt;</code> over generic divs, improving your search rankings.</p>
+                </article>
+
+                <article class="feature-card">
+                    <h3>Easier Maintenance</h3>
+                    <p>Code is more readable and meaningful. Developers instantly understand the purpose of each section without reading CSS classes.</p>
+                </article>
+
+                <article class="feature-card">
+                    <h3>Future-Proof</h3>
+                    <p>Browser features and tools are built around semantic HTML. Your site works better with reader modes, extensions, and future technologies.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECTION: Testimonials with articles -->
+        <section id="testimonials" class="testimonials">
+               started section testimonials
+            <h2>What Developers Say</h2>
+            
+            <div class="testimonials-container">
+                <!-- ARTICLE: Each testimonial is self-contained and could stand alone -->
+                <article class="testimonial">
+                     started article
+                    <blockquote>
+                        <!-- BLOCKQUOTE: Represents content quoted from another source
+                             Why: Semantically marks quotations
+                             Accessibility: Screen readers can identify quoted content
+                             Note: Use cite attribute for source URL -->
+                        <p>"Switching to semantic HTML improved our site's accessibility score from 65 to 95. Screen reader users reported much better navigation."</p>
+                    </blockquote>
+                    
+                    <!-- FOOTER: Context for the article (author, date, metadata)
+                         Why: footer isn't just for page bottom - works in articles too
+                         When to use: Author info, publication date, related links
+                         Scope: This footer is scoped to the article, not the whole page -->
+                    <footer class="testimonial-author">
+                         started footer-----
+                        <strong>Sarah Chen</strong>
+                        <p>Senior Frontend Developer</p>
+                        <!-- TIME: Represents a specific time/date
+                             Why: Machine-readable dates via datetime attribute
+                             Accessibility: Screen readers can announce dates properly
+                             SEO: Search engines understand temporal context
+                             datetime: Must be in machine-readable format -->
+                        <time datetime="2024-11-15">November 15, 2024</time>
+                    </footer>
+                </article>
+
+                <article class="testimonial">
+                    <blockquote>
+                        <p>"Our SEO rankings improved significantly after restructuring with semantic HTML. Google clearly rewards proper markup."</p>
+                    </blockquote>
+                    <footer class="testimonial-author">
+                        <strong>Marcus Williams</strong>
+                        <p>SEO Specialist</p>
+                        <time datetime="2024-10-22">October 22, 2024</time>
+                    </footer>
+                </article>
+
+                <article class="testimonial">
+                    <blockquote>
+                        <p>"Code reviews became easier. New team members understand the structure instantly without documentation."</p>
+                    </blockquote>
+                    <footer class="testimonial-author">
+                        <strong>Priya Patel</strong>
+                        <p>Engineering Manager</p>
+                        <time datetime="2024-12-01">December 1, 2024</time>
+                    </footer>
+                </article>
+            </div>
+        </section>
+
+        <!-- ASIDE: Tangentially related content
+             Why: Content related to main content but can stand separately
+             When to use: Sidebars, pull quotes, related links, ads
+             vs SECTION: Aside is supplementary, section is primary content
+             Placement: Can be inside or outside main depending on scope -->
+        <aside class="related-resources" style="border: 2px solid cyan;">
+            started aside
+            <h2>Learn More</h2>
+            <nav aria-label="Related resources">
+                <!-- This nav is okay because it's a significant navigation block -->
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank" rel="noopener noreferrer">MDN HTML Elements Reference</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer">WCAG Accessibility Guidelines</a></li>
+                    <li><a href="https://html.spec.whatwg.org/" target="_blank" rel="noopener noreferrer">HTML Living Standard</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- SECTION: Call to Action -->
+        <section class="cta">
+            <h2>Ready to Build Semantic Websites?</h2>
+            <p>Start using proper HTML5 semantics today and see the difference</p>
+            <a href="#contact" class="cta-button">Contact Us</a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER: Represents footer for the page or section
+         Why: Contains metadata, copyright, contact info, links
+         Accessibility: Screen readers identify as site footer
+         Scope: When inside body (not article), it's the page footer
+         Best practice: Typically includes contact info, legal, social links -->
+    <footer id="contact">
+       stared  footer contact
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About SemanticSite</h3>
+                <p>We teach developers how to build accessible, maintainable, and SEO-friendly websites using modern web standards.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <!-- ADDRESS: Represents contact information
+                     Why: Specifically for physical/digital contact details
+                     When to use: Physical addresses, email, phone, social
+                     Accessibility: Screen readers identify contact information
+                     Scope: For nearest article/body ancestor
+                     Note: Don't use for addresses that aren't contact info -->
+                <address>
+                    <p>
+                        Email: <a href="mailto:hello@semanticsite.com">hello@semanticsite.com</a><br>
+                        Phone: <a href="tel:+15551234567">+1 (555) 123-4567</a><br>
+                        Location: San Francisco, CA
+                    </p>
+                </address>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <!-- Not using nav here because these are secondary footer links
+                     Explanation: nav should be for major navigation blocks
+                     Simple link lists in footer can just be ul -->
+                <ul>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="#accessibility">Accessibility Statement</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                &copy; <time datetime="2024">2024</time> SemanticSite. All rights reserved.
+            </p>
+            <p>
+                <small>Built with semantic HTML5 for accessibility and SEO</small>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

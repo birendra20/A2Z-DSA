@@ -1,0 +1,229 @@
+/* styles.css — CSS Position Concepts Learning Project
+   Organized by concept with explanations above each rule block.
+*/
+
+:root {
+    --bg: #f5f7fb;
+    --card: #fff;
+    --muted: #6b7280;
+    --accent: #0b6ef6;
+    --danger: #d73a49;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: Inter, system-ui, Arial, sans-serif;
+    background: var(--bg);
+    color: #111;
+    margin: 0;
+    padding: 2rem
+}
+
+header h1 {
+    margin: 0 0 .25rem
+}
+
+.lead {
+    color: var(--muted);
+    margin: 0 0 1rem
+}
+
+main {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+}
+
+.card {
+    background: var(--card);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(12, 13, 14, .06)
+}
+
+.explain {
+    color: var(--muted);
+    font-size: .95rem
+}
+
+.small {
+    font-size: .85rem
+}
+
+/* ---------- position: static ---------- */
+/* Default positioning; elements follow normal document flow. Offsets are ignored. */
+.static-demo {
+    border: 1px dashed #e6eef8;
+    padding: .5rem
+}
+
+.static-demo p {
+    margin: .25rem 0;
+    padding: .4rem;
+    background: #fbfdff
+}
+
+/* ---------- position: relative ---------- */
+/* Relative keeps element in flow; offsets move it visually but original space remains. */
+.rel-demo {
+    position: relative;
+    padding: .5rem;
+    border: 1px solid #eef3ff
+}
+
+.box {
+    padding: .6rem;
+    border-radius: 6px;
+    background: #fff;
+    margin: .3rem 0
+}
+
+.box.shifted {
+    position: relative;
+    top: -10px;
+    left: 10px;
+    background: #fff7ed;
+    border: 1px solid #ffe1b3
+}
+
+/* Demonstrate using relative as positioning context for absolute children (see absolute section). */
+
+/* ---------- position: absolute ---------- */
+/* Absolute removes element from flow and positions it relative to the nearest positioned ancestor. */
+.abs-container {
+    position: relative;
+    border: 1px solid #e8eefc;
+    border-radius: 8px;
+    padding: 1rem;
+    height: 120px
+}
+
+.abs-container .content {
+    background: #fff;
+    padding: .5rem
+}
+
+.abs-container .tooltip {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--accent);
+    color: #fff;
+    padding: .35rem .6rem;
+    border-radius: 6px
+}
+
+/* If .abs-container had position:static (default), the tooltip would be positioned against the viewport instead. */
+
+/* ---------- position: fixed ---------- */
+/* Fixed elements are positioned relative to the viewport and do not move when the page scrolls. */
+.fixed-demo {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #e6eef8;
+    margin-bottom: 2rem
+}
+
+/* fixed footer pinned to bottom of viewport */
+.fixed-footer {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    background: #fff;
+    padding: .6rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(11, 110, 246, .08)
+}
+
+/* ---------- position: sticky ---------- */
+/* Sticky toggles between relative and fixed depending on scroll position within its scroll container. */
+.sticky-wrapper {
+    height: 180px;
+    overflow: auto;
+    border: 1px solid #e9f0ff;
+    border-radius: 8px
+}
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background: #fff7;
+    padding: .6rem;
+    border-bottom: 1px solid #eef3ff
+}
+
+.long-content {
+    padding: .6rem
+}
+
+/* Sticky pitfalls: parent overflow:hidden or missing top/left will prevent it from sticking. */
+
+/* ---------- offsets, positioning context, z-index ---------- */
+/* Offsets move positioned elements; z-index controls stacking order. Stacking contexts are created by positioned elements with z-index, transform, opacity < 1, etc. */
+.stack-demo {
+    position: relative;
+    height: 120px;
+    border: 1px solid #eef2ff;
+    border-radius: 8px;
+    padding: 1rem
+}
+
+.layer {
+    position: absolute;
+    width: 140px;
+    height: 60px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff
+}
+
+.layer.base {
+    left: 10px;
+    top: 10px;
+    background: #9aaafe;
+    z-index: 1
+}
+
+.layer.middle {
+    left: 40px;
+    top: 30px;
+    background: #6b8cff;
+    z-index: 5
+}
+
+.layer.top {
+    left: 70px;
+    top: 50px;
+    background: #254edb;
+    z-index: 10
+}
+
+/* Example: transform also creates a new stacking context even without z-index. */
+.stack-demo .transformed {
+    transform: translateZ(0)
+}
+
+/* Utilities */
+footer {
+    margin-top: 1rem;
+    color: var(--muted)
+}
+
+/* small responsive hint */
+@media (max-width:520px) {
+    body {
+        padding: 1rem
+    }
+
+    main {
+        grid-template-columns: 1fr
+    }
+}

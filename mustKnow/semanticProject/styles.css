@@ -1,0 +1,484 @@
+/* ===================================
+   SEMANTIC HTML LANDING PAGE STYLES
+   Minimal CSS focused on layout and readability
+   =================================== */
+
+/* ===================================
+   RESET & BASE STYLES
+   =================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9fafb;
+}
+
+/* Better readability for long-form content */
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: #4A90E2;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #357ABD;
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: 2px solid #4A90E2;
+    outline-offset: 2px;
+}
+
+/* ===================================
+   HEADER & NAVIGATION
+   =================================== */
+
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+.logo span {
+    color: #4A90E2;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav ul li a {
+    font-weight: 500;
+    padding: 0.5rem;
+}
+
+/* ===================================
+   MAIN CONTENT CONTAINER
+   =================================== */
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ===================================
+   SECTIONS - GENERAL
+   =================================== */
+
+section {
+    padding: 4rem 2rem;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.section-intro {
+    text-align: center;
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+/* ===================================
+   HERO SECTION
+   =================================== */
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    min-height: 500px;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-align: left;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+/* Figure element for hero image */
+.hero-image {
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+figcaption {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+/* ===================================
+   CALL TO ACTION BUTTON
+   =================================== */
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #ffffff;
+    color: #667eea;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.cta-button:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+
+/* ===================================
+   FEATURES SECTION
+   =================================== */
+
+.features {
+    background-color: #ffffff;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Article elements as feature cards */
+.feature-card {
+    padding: 2rem;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h3 {
+    color: #4A90E2;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.feature-card code {
+    background-color: #e5e7eb;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+
+/* ===================================
+   TESTIMONIALS SECTION
+   =================================== */
+
+.testimonials {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.testimonials-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Article elements as testimonial cards */
+.testimonial {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+blockquote {
+    border-left: 4px solid #4A90E2;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    color: #555;
+}
+
+blockquote p {
+    margin: 0;
+}
+
+/* Footer within article (testimonial author) */
+.testimonial-author {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 1rem;
+}
+
+.testimonial-author strong {
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+.testimonial-author p {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0.25rem 0;
+}
+
+.testimonial-author time {
+    color: #999;
+    font-size: 0.85rem;
+}
+
+/* ===================================
+   ASIDE - RELATED RESOURCES
+   =================================== */
+
+aside {
+    background-color: #fff9e6;
+    padding: 3rem 2rem;
+    border-top: 3px solid #f4d03f;
+    border-bottom: 3px solid #f4d03f;
+}
+
+aside h2 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+}
+
+aside nav ul {
+    list-style: none;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+aside nav ul li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+aside nav ul li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #4A90E2;
+    font-weight: bold;
+}
+
+/* ===================================
+   CTA SECTION
+   =================================== */
+
+.cta {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+.cta h2 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.cta p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.cta .cta-button {
+    background-color: #4A90E2;
+    color: white;
+}
+
+.cta .cta-button:hover {
+    background-color: #357ABD;
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+
+footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 3rem 2rem 1rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+    color: #4A90E2;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.footer-section p,
+.footer-section ul {
+    color: #cccccc;
+    line-height: 1.8;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #cccccc;
+}
+
+.footer-section a:hover {
+    color: #4A90E2;
+}
+
+/* Address element styling */
+address {
+    font-style: normal;
+}
+
+address a {
+    color: #4A90E2;
+}
+
+/* Footer bottom section */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+    text-align: center;
+    color: #999;
+}
+
+.footer-bottom small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #666;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 3rem 1.5rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    section h2 {
+        font-size: 1.5rem;
+    }
+
+    .features-grid,
+    .testimonials-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===================================
+   ACCESSIBILITY ENHANCEMENTS
+   =================================== */
+
+/* Focus styles for keyboard navigation */
+*:focus-visible {
+    outline: 3px solid #4A90E2;
+    outline-offset: 2px;
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* High contrast mode improvements */
+@media (prefers-contrast: high) {
+    body {
+        background-color: #ffffff;
+    }
+
+    .feature-card {
+        border: 2px solid #000000;
+    }
+}
